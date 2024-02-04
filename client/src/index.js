@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { thunk } from "redux-thunk";
-
+import './index.css'
 import reducers from "./reducers";
 import App from "./App";
 
