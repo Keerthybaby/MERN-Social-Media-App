@@ -1,53 +1,33 @@
-import React,{useEffect,useState} from "react";
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-import{useDispatch} from 'react-redux';
+import React from "react";
+import { Container} from "@material-ui/core";
 
-
-import {getPosts} from './actions/posts';
-import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
-import memories from "./images/memories.png";
-import useStyles from './styles';
+import { BrowserRouter,Routes,Route,Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import PostDetails from "./components/PostDetails/PostDetails";
+import Home from "./components/Home/Home";
+import Auth from "./components/Auth/Auth";
 
 const App = () => {
 
-  const [currentId,setCurrentId]=useState(null);
-  const classes=useStyles();
-  const dispatch=useDispatch();
-
-  useEffect(()=>{
-    dispatch(getPosts());
-  },[currentId,dispatch]);
+  // const user=Json.parse(localStore.getitem('profile'));
 
   return (
-    <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading}  variant="h2" align="center">
-          Memories
-        </Typography>
-        <img className={classes.image} src={memories} alt="memories" height="60" />
-      </AppBar>
-      <Grow in>
-        <Container>
-          <Grid
-            className="classes.mainContainer"
-            container
-            // direction="column-reverse"
-            justifyContent="space-between"
-            alignItems="stretch"
-            spacing={3}
-          >
-            <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId}/>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId}/>
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
+  <BrowserRouter>
+  <Container maxWidth="xl">
+      <Navbar />
+      <Routes>
+        <Route path="/" exact element={<Navigate to="/posts"/>} />
+        <Route path="/posts" exact element={<Home/>}/>
+        <Route path="/posts/search" exact element={<Home/>}/>
+        <Route path="/posts/:id" exact element={<PostDetails/>}/>
+        <Route path="/auth" exact element={<Auth/>} />
+         {/* <Route path="/auth" exact element={()=>(!user ? <Auth/> : <Navigate to="/posts/"/>)} />  */}
+      </Routes>
     </Container>
+  </BrowserRouter>
   );
+    
 };
+
 
 export default App;

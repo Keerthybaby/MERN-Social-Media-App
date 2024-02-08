@@ -20,9 +20,9 @@ const Post = ({post,setCurrentId}) => {
   const dispatch=useDispatch();
   const classes = useStyles();
 
-  if (!post) {
-    return null; // Or render a loading indicator or error message
-  }
+  // if (!post) {
+  //   return null; // Or render a loading indicator or error message
+  // }
 
 
   
