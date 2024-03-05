@@ -1,6 +1,6 @@
 # MERN FLASHBACKFOLIO APP
 
-![App Image](/client/src/images/memories.png)
+![App Image](/client/src/images/web.png)
 
 MERN Flashbackfolio is a full-stack social media application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. Allows users to create, store, and share post. Users can log memorable moments by uploading images, adding descriptions, and categorizing them. Provides a platform for users to interact by viewing, liking, and commenting on shared posts.
 
